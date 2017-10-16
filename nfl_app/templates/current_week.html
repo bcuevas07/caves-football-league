@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{% block content %}
+    <div id="current-schedule" class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table id="current-week-games" class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                          <th>Away Team</th>
+                          <th>Home Team</th>
+                          <th>Start Time</th>
+                          <th>Score</th>
+                          <th>Finished</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for game in games %}
+                        <tr>
+                            <td>{{game.away_team}}</td>
+                            <td>{{game.home_team}}</td>
+                            <td>{{game.day}} @ {{game.start_time}}</td>
+                            <td>{{game.away_score}} - {{game.home_score}}</td>
+                            <td>{% if game.finished %} YES {% else %} NO {% endif %}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="5" align="center">No Game Data This Week</td></tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

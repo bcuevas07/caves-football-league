@@ -1,7 +1,7 @@
 import json
 import requests
 
-from nfl_game import NflGame
+from .nfl_game import NflGame
 
 TEAM_DETAILS = {
     'ARI': {'name': 'Arizona Cardinals', 'division': 'west', 'conference': 'NFC'},
@@ -38,38 +38,40 @@ TEAM_DETAILS = {
     'WAS': {'name': 'Washington Redskins', 'division': 'east', 'conference': 'NFC'}
 }
 
-class NflData():
+def get_current_games():
+    game_list = []
+    game_data = _query_database('/games')
+    for game in game_data:
+        nfl_game = NflGame(game)
+        game_list.append(nfl_game)
+    return game_list
 
-    def __init(self):
-        pass
 
-    def get_current_games(self):
-        game_list = []
-        game_data = self._query_database('/games')
-        for game in game_data:
-            nfl_game = NflGame(game)
-            game_list.append(nfl_game)
-        return game_list
+def get_games_by_year(year):
+    game_list = []
+    game_data = _query_database('/games/{}'.format(year))
+    for game in game_data:
+        nfl_game = NflGame(game)
+        game_list.append(nfl_game)
+    return game_list
 
-    def get_games_by_year(self, year):
-        game_list = []
-        game_data = self._query_database('/games/{}'.format(year))
-        for game in game_data:
-            nfl_game = NflGame(game)
-            game_list.append(nfl_game)
-        return game_list
 
-    def get_team_schedule(self, team):
-        game_list = []
-        if not isinstance(team, str) or team not in TEAM_DETAILS:
-            return game_list  # Maybe raise an exception or return some error string instead?
-        team_data = self._query_database('/team/{}/schedule'.format(team))
-        for game in team_data:
-            nfl_game = NflGame(game)
-            game_list.append(nfl_game)
-        return game_list
+def get_team_schedule(team):
+    game_list = []
+    if not isinstance(team, str) or team not in TEAM_DETAILS:
+        return game_list  # Maybe raise an exception or return some error string instead?
+    team_data = _query_database('/team/{}/schedule'.format(team))
+    for game in team_data:
+        nfl_game = NflGame(game)
+        game_list.append(nfl_game)
+    return game_list
 
-    def _query_database(self, relative_path):
-        root_path = 'http://api.suredbits.com/nfl/v0/'
-        raw_data = requests.get('{}{}'.format(root_path, relative_path))
-        return json.loads(raw_data.content.decode('UTF-8'))
+
+def _query_database(relative_path):
+    root_path = 'http://api.suredbits.com/nfl/v0/'
+    raw_data = requests.get('{}{}'.format(root_path, relative_path))
+    parsed_data = raw_data.content.decode('UTF-8')
+    json_data = {}
+    if raw_data.status_code != 200 and   parsed_data is not None: # No internet access or access to the api site
+        json_data = json.loads(parsed_data)
+    return json_data

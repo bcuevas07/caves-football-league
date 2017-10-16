@@ -1,3 +1,6 @@
+import datetime
+
+
 class NflGame():
     def __init__(self, game_data):
         # {
@@ -30,15 +33,17 @@ class NflGame():
         #     "week": "NflWeek5",
         #     "seasonType": "Regular"
         # }
+        from nfl.utils import TEAM_DETAILS # Cannot import this on start-up since utils loads this file
+
         self.id = game_data['gsisId']
         self.year = game_data['seasonYear']
-        self.start_time = game_data['startTime']
+        self.start_time = datetime.datetime.strptime(game_data['startTime'].split('.')[0], '%Y%m%dT%H%M%S')
         self.day = game_data['dayOfWeek']
         self.week = game_data['week'][7:] # First seven characters are always NflWeek
         self.season_type = game_data['seasonType'].lower()
         self.finished = game_data['finished']
-        self.home_team = game_data['homeTeam']['team']
-        self.away_team = game_data['awayTeam']['team']
+        self.home_team = TEAM_DETAILS[game_data['homeTeam']['team']]['name']
+        self.away_team = TEAM_DETAILS[game_data['awayTeam']['team']]['name']
         self.home_score = game_data['homeTeam']['score']
         self.away_score = game_data['awayTeam']['score']
 

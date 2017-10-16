@@ -17,4 +17,5 @@ from django.conf.urls import url
 from nfl import views
 urlpatterns = [
     url(r'home/$', views.home, name='home'),
+    url(r'current_week/$', views.current_week, name='current_week')
 ]
