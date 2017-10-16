@@ -1,0 +1,12 @@
+# Pycharm generated content #
+#############################
+.idea
+
+# Logs and databases #
+######################
+*.sql
+*.sqlite
+*.sqlite3
+
+*.pyc
+# *migrations
