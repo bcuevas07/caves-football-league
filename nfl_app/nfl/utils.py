@@ -76,6 +76,18 @@ TEAM_ID_MAP = {
     'Washington Redskins': 'WAS'
 }
 
+PARTICIPANT_TEAMS = {
+    'Bryan': ['Atlanta Falcons', 'Tampa Bay Buccaneers', 'Indianapolis Colts', 'Miami Dolphins'],
+    'Daniel': ['New England Patriots', 'Carolina Panthers', 'Minnesota Vikings', 'Chicago Bears'],
+    'Dorothy': ['Pittsburgh Steelers', 'Kansas City Chiefs', 'Washington Redskins', 'Cincinnati Bengals'],
+    'Gabri': ['Green Bay Packers', 'Tennessee Titans', 'Detroit Lions', 'Jacksonville Jaguars'],
+    'Martin': ['Los Angeles Chargers', 'New Orleans Saints', 'Los Angeles Rams', 'New York Jets'],
+    'Meg': ['Dallas Cowboys', 'Denver Broncos', 'Baltimore Ravens', 'San Francisco 49ers'],
+    'Paula': ['Seattle Seahawks', 'Houston Texans', 'Philadelphia Eagles', 'Buffalo Bills'],
+    'Vic': ['Oakland Raiders', 'Arizona Cardinals', 'New York Giants', 'Cleveland Browns']
+}
+
+
 def get_current_status():
     data = _query_database('info')
     return data
@@ -118,6 +130,16 @@ def get_games_by_year(year):
         game_list.append(nfl_game)
     return game_list
 
+
+def get_participant_records():
+    team_scores = get_team_records()
+    participant_scores = []
+    for participant in PARTICIPANT_TEAMS.keys():
+        individual_score = {'name': participant, 'wins': 0}
+        for team in PARTICIPANT_TEAMS[participant]:
+            individual_score['wins'] += team_scores[team]['wins']
+        participant_scores.append(individual_score)
+    return participant_scores
 
 def get_team_records():
     team_scores = {}
