@@ -1,7 +1,11 @@
+import json
+
+from datetime import date, time
+from django.http import JsonResponse
 from django.shortcuts import render
-from nfl.utils import get_current_games
-from nfl.nfl_game import NflGame
-from datetime import datetime
+
+from nfl.deorators import post_only
+from nfl.utils import get_current_games, get_games_by_week
 # Create your views here.
 
 
@@ -11,34 +15,31 @@ def home(request):
 
 def current_week(request):
     games = get_current_games()
-    games.append(NflGame({
-            "gsisId": "2017100900",
-            "seasonYear": 2017,
-            "startTime": "20171010T003000.000Z",
-            "timeInserted": "20170803T145501.334Z",
-            "dayOfWeek": "Monday",
-            "gameKey": "57311",
-            "finished": True,
-            "homeTeam": {
-                "scoreQ3": 7,
-                "turnovers": 0,
-                "scoreQ2": 0,
-                "score": 17,
-                "team": "CHI",
-                "scoreQ1": 2,
-                "scoreQ4": 8
-            },
-            "timeUpdate": "20171010T115412.165Z",
-            "awayTeam": {
-                "scoreQ3": 14,
-                "turnovers": 1,
-                "scoreQ2": 3,
-                "score": 20,
-                "team": "MIN",
-                "scoreQ1": 0,
-                "scoreQ4": 3
-            },
-            "week": "NflWeek5",
-            "seasonType": "Regular"
-        }))
     return render(request, 'current_week.html', context={'games': games})
+
+
+def weekly_schedule(request):
+    games = []
+    return render(request, 'weekly_schedule.html', context={'games': games})
+
+
+@post_only
+def ajax_week_schedule(request, week):
+    # week = request.POST.get('week', -1)
+
+    games = get_games_by_week(week, json_format=True)
+    json_games = json.dumps(games, default=_serialize)
+    return JsonResponse(json_games, safe=False)
+
+
+def _serialize(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, date):
+        serial = obj.isoformat()
+        return serial
+
+    if isinstance(obj, time):
+        serial = obj.isoformat()
+        return serial
+    return obj.__dict__

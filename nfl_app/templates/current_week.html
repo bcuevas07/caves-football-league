@@ -1,4 +1,4 @@
-{%extends 'base.html' %}
+{% extends 'base.html' %}
 {% block content %}
     <div id="current-schedule" class="row">
         <div class="col-xs-12">
@@ -18,7 +18,7 @@
                         <tr>
                             <td>{{game.away_team}}</td>
                             <td>{{game.home_team}}</td>
-                            <td>{{game.day}} @ {{game.start_time}}</td>
+                            <td>{{game.start_time | date:"l m/d/Y @ P"}}</td>
                             <td>{{game.away_score}} - {{game.home_score}}</td>
                             <td>{% if game.finished %} YES {% else %} NO {% endif %}</td>
                         </tr>

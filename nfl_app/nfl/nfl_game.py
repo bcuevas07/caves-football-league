@@ -1,8 +1,8 @@
 import datetime
-
+from pytz import timezone
 
 class NflGame():
-    def __init__(self, game_data):
+    def __init__(self, game_data, json_format=False):
         # {
         #     "gsisId": "2017100900",
         #     "seasonYear": 2017,
@@ -37,7 +37,11 @@ class NflGame():
 
         self.id = game_data['gsisId']
         self.year = game_data['seasonYear']
-        self.start_time = datetime.datetime.strptime(game_data['startTime'].split('.')[0], '%Y%m%dT%H%M%S')
+        # self.start_time = datetime.datetime.strptime(game_data['startTime'].split('.')[0], '%Y%m%dT%H%M%S')
+        self.start_time = datetime.datetime.strptime(game_data['startTime'], '%Y%m%dT%H%M%S.%fZ')
+        self.start_time = timezone('UTC').localize(self.start_time)
+        if json_format:
+            self.start_time = self._json_format_datetime(self.start_time)
         self.day = game_data['dayOfWeek']
         self.week = game_data['week'][7:] # First seven characters are always NflWeek
         self.season_type = game_data['seasonType'].lower()
@@ -52,3 +56,11 @@ class NflGame():
 
     def __str__(self):
         return '{} @ {}'.format(self.away_team, self.home_team)
+
+    def _json_format_datetime(self, obj):
+        obj = obj.astimezone(timezone('US/Pacific'))
+        day = obj.strftime('%A')
+        date = obj.strftime('%m/%d/%Y')
+        time = obj.strftime('%I:%M %p').lower()
+        result = '{} {} @ {}'.format(day, date, time)
+        return result
