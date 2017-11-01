@@ -1,6 +1,9 @@
 import datetime
 from pytz import timezone
 
+SEASON_GAME_TYPE = 'regular'
+PRESEASON_GAME_TYPE = 'preseason'
+
 class NflGame():
     def __init__(self, game_data, json_format=False):
         # {
@@ -64,3 +67,19 @@ class NflGame():
         time = obj.strftime('%I:%M %p').lower()
         result = '{} {} @ {}'.format(day, date, time)
         return result
+
+    def is_team_win(self, team_id):
+        """
+            Determines if the team_id won or lost the game.
+        :param team_id:
+        :return:
+                True if team_id won
+                False if team_id lost
+                None if team_id is not part of this game
+        """
+        if self.home_team == team_id:
+            return self.home_score > self.away_score
+        elif self.away_team == team_id:
+            return self.away_score > self.home_score
+        else:
+            return None

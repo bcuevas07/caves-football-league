@@ -4,7 +4,7 @@ import os
 import requests
 
 from config.settings.base import BASE_DIR, OFFLINE_MODE
-from .nfl_game import NflGame
+from .nfl_game import NflGame, SEASON_GAME_TYPE
 
 TEAM_DETAILS = {
     'ARI': {'name': 'Arizona Cardinals', 'division': 'west', 'conference': 'NFC'},
@@ -39,6 +39,41 @@ TEAM_DETAILS = {
     'TB': {'name': 'Tampa Bay Buccaneers', 'division': 'south', 'conference': 'NFC'},
     'TEN': {'name': 'Tennessee Titans', 'division': 'south', 'conference': 'AFC'},
     'WAS': {'name': 'Washington Redskins', 'division': 'east', 'conference': 'NFC'}
+}
+
+TEAM_ID_MAP = {
+    'Arizona Cardinals': 'ARI',
+    'Atlanta Falcons': 'ATL',
+    'Baltimore Ravens': 'BAL',
+    'Buffalo Bills': 'BUF',
+    'Carolina Panthers': 'CAR',
+    'Chicago Bears': 'CHI',
+    'Cincinnati Bengals': 'CIN',
+    'Cleveland Browns': 'CLE',
+    'Dallas Cowboys': 'DAL',
+    'Denver Broncos': 'DEN',
+    'Detroit Lions': 'DET',
+    'Green Bay Packers': 'GB',
+    'Houston Texans': 'HOU',
+    'Indianapolis Colts': 'IND',
+    'Jacksonville Jaguars': 'JAC',
+    'Kansas City Chiefs': 'KC',
+    'Los Angeles Chargers': 'LAC',
+    'Los Angeles Rams': 'LA',
+    'Miami Dolphins': 'MIA',
+    'Minnesota Vikings': 'MIN',
+    'New England Patriots': 'NE',
+    'New Orleans Saints': 'NO',
+    'New York Giants': 'NYG',
+    'New York Jets': 'NYJ',
+    'Oakland Raiders': 'OAK',
+    'Philadelphia Eagles': 'PHI',
+    'Pittsburgh Steelers': 'PIT',
+    'Seattle Seahawks': 'SEA',
+    'San Francisco 49ers': 'SF',
+    'Tampa Bay Buccaneers': 'TB',
+    'Tennessee Titans': 'TEN',
+    'Washington Redskins': 'WAS'
 }
 
 def get_current_status():
@@ -82,6 +117,32 @@ def get_games_by_year(year):
         nfl_game = NflGame(game)
         game_list.append(nfl_game)
     return game_list
+
+
+def get_team_records():
+    team_scores = {}
+    games = get_games_by_year(2017)
+    for game in games:
+        if game.finished and game.season_type == SEASON_GAME_TYPE and (game.home_score > 0 or game.away_score > 0):
+            if game.home_team not in team_scores.keys():
+                team_scores[game.home_team] = {'wins': 0, 'losses': 0, 'ties': 0, 'name': game.home_team,
+                                               'conference': TEAM_DETAILS[TEAM_ID_MAP[game.home_team]]['conference'],
+                                               'division': TEAM_DETAILS[TEAM_ID_MAP[game.home_team]]['division'].upper()}
+            if game.away_team not in team_scores.keys():
+                team_scores[game.away_team] = {'wins': 0, 'losses': 0, 'ties': 0, 'name': game.away_team,
+                                               'conference': TEAM_DETAILS[TEAM_ID_MAP[game.away_team]]['conference'],
+                                               'division': TEAM_DETAILS[TEAM_ID_MAP[game.away_team]]['division'].upper()}
+
+            if game.home_score > game.away_score:
+                team_scores[game.home_team]['wins'] += 1
+                team_scores[game.away_team]['losses'] += 1
+            elif game.away_score > game.home_score:
+                team_scores[game.away_team]['wins'] += 1
+                team_scores[game.home_team]['losses'] += 1
+            else: #tie
+                team_scores[game.home_team]['ties'] += 1
+                team_scores[game.away_team]['ties'] += 1
+    return team_scores
 
 
 def get_team_schedule(team):

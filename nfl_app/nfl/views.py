@@ -5,7 +5,9 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from nfl.deorators import post_only
-from nfl.utils import get_current_games, get_games_by_week
+from nfl.utils import get_current_games, get_games_by_week, get_team_records
+
+
 # Create your views here.
 
 
@@ -16,6 +18,14 @@ def home(request):
 def current_week(request):
     games = get_current_games()
     return render(request, 'current_week.html', context={'games': games})
+
+
+def season_scores(request):
+    team_scores = get_team_records()
+    teams = []
+    for team in team_scores.keys():
+        teams.append(team_scores[team])
+    return render(request, 'season_scores.html', context={'team_scores': teams})
 
 
 def weekly_schedule(request):

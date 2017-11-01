@@ -19,6 +19,7 @@ from nfl import views
 urlpatterns = [
     url(r'home/$', views.home, name='home'),
     url(r'current_week/$', views.current_week, name='current_week'),
+    url(r'season_scores/$', views.season_scores, name='season_scores'),
     url(r'weekly_schedule/$', views.weekly_schedule, name='weekly_schedule'),
     url(r'weekly_schedule/(?P<week>\d+)/$', views.ajax_week_schedule, name='get_week_schedule')
 ]
