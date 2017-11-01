@@ -1,0 +1,482 @@
+[
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "ATL",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Thursday",
+    "startTime": "20171208T012500.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57426",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "NO",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017120700",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "BUF",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57427",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "IND",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121000",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "CAR",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57428",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "MIN",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121001",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "CIN",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57429",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "CHI",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121002",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "CLE",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57430",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "GB",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121003",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "HOU",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57431",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "SF",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121004",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "JAC",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57432",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "SEA",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121005",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "KC",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57433",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "OAK",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121006",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "TB",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T180000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57434",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "DET",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121007",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "ARI",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T210500.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57435",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "TEN",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121008",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "DEN",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T210500.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57436",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "NYJ",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121009",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "LAC",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T210500.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57437",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "WAS",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121010",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "LA",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T212500.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57438",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "PHI",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121011",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "NYG",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171210T212500.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57439",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "DAL",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121012",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "PIT",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Sunday",
+    "startTime": "20171211T013000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57440",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "BAL",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121013",
+    "timeInserted": "20170803T145501.334Z"
+  },
+  {
+    "finished": false,
+    "homeTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "MIA",
+      "scoreQ4": 0
+    },
+    "dayOfWeek": "Monday",
+    "startTime": "20171212T013000.000Z",
+    "timeUpdate": "20170814T183818.198Z",
+    "week": "NflWeek14",
+    "gameKey": "57441",
+    "awayTeam": {
+      "score": 0,
+      "turnovers": 0,
+      "scoreQ2": 0,
+      "scoreQ3": 0,
+      "scoreQ1": 0,
+      "team": "NE",
+      "scoreQ4": 0
+    },
+    "seasonYear": 2017,
+    "seasonType": "Regular",
+    "gsisId": "2017121100",
+    "timeInserted": "20170803T145501.334Z"
+  }
+]
