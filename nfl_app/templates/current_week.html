@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div id="current-week" class="row" style="text-align:center">
+        <h1>NFL Week {{week}}</h1>
+    </div>
     <div id="current-schedule" class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-9">
             <div class="table-responsive">
                 <table id="current-week-games" class="table table-striped table-hover">
                     <thead>
@@ -28,6 +31,24 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="col-xs-3">
+            <table id="bye-week-table" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Teams on Bye</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for team in byes %}
+                        <tr>
+                            <td>{{team}}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td>No Teams on Bye This Week</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

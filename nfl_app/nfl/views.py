@@ -5,7 +5,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from nfl.deorators import post_only
-from nfl.utils import get_current_games, get_games_by_week, get_team_records, get_participant_records
+from nfl.utils import get_current_games, get_games_by_week, get_team_records, get_participant_records, get_byes_by_week, \
+    get_current_week
 
 
 # Create your views here.
@@ -18,7 +19,9 @@ def home(request):
 
 def current_week(request):
     games = get_current_games()
-    return render(request, 'current_week.html', context={'games': games})
+    current_week = get_current_week()
+    byes = get_byes_by_week(current_week, json_format=True)
+    return render(request, 'current_week.html', context={'games': games, 'byes': byes, 'week': current_week})
 
 
 def season_scores(request):
@@ -39,8 +42,9 @@ def ajax_week_schedule(request, week):
     # week = request.POST.get('week', -1)
 
     games = get_games_by_week(week, json_format=True)
-    json_games = json.dumps(games, default=_serialize)
-    return JsonResponse(json_games, safe=False)
+    result = {'games': games, 'bye_week': get_byes_by_week(week, json_format=False)}
+    json_result = json.dumps(result, default=_serialize)
+    return JsonResponse(json_result, safe=False)
 
 
 def _serialize(obj):

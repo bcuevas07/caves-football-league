@@ -87,9 +87,53 @@ PARTICIPANT_TEAMS = {
     'Vic': ['Oakland Raiders', 'Arizona Cardinals', 'New York Giants', 'Cleveland Browns']
 }
 
+PRESEASON_TAG = 'NflPreSeasonWeek'
+SEASON_TAG = 'NflWeek'
+
+
+def get_byes(game_data, json_format=False):
+    team_list = []
+    bye_list = []
+    for game in game_data:
+        nfl_game = NflGame(game, json_format=json_format)
+        if nfl_game.away_team not in team_list:
+            team_list.append(nfl_game.away_team)
+        if nfl_game.home_team not in team_list:
+            team_list.append(nfl_game.home_team)
+    for key in TEAM_ID_MAP.keys():
+        if key not in team_list:
+            bye_list.append(key)
+    return bye_list
+
+
+def get_byes_by_week(week_data, json_format=False):
+    try:
+        week = int(week_data)
+    except:
+        return []
+    if week < 1 or week > 17:
+        return []
+    game_data = _query_database('games/2017/{}'.format(week))
+    if OFFLINE_MODE:
+        with open(os.path.join(BASE_DIR, 'nfl', 'test_scripts', 'weeks', 'games_2017_{}.json'.format(week))) as file:
+            game_data = json.loads(file.read())
+    return get_byes(game_data, json_format=json_format)
+
 
 def get_current_status():
-    data = _query_database('info')
+    """
+        json object looks like:
+          "seasonYear": 2017,
+          "lastRosterDownload": "20171110T132121.435Z",
+          "week": "NflWeek10",
+          "version": "8",
+          "seasonType": "Regular"
+    """
+    if OFFLINE_MODE:
+        with open(os.path.join(BASE_DIR, 'nfl','test_scripts', 'info.json')) as json_file:
+            data = json.loads(json_file.read())
+    else:
+        data = _query_database('info')
     return data
 
 
@@ -103,6 +147,18 @@ def get_current_games():
         nfl_game = NflGame(game)
         game_list.append(nfl_game)
     return game_list
+
+
+def get_current_week():
+    info = get_current_status()
+    week = -1
+    if info and 'week' in info.keys():
+        week_str = info['week'].replace(PRESEASON_TAG, '').replace(SEASON_TAG, '')
+        try:
+            week = int(week_str)
+        except:
+            print('Error parsing current week text. String is not a valid integer: {}'.format(week_str))
+    return week
 
 
 def get_games_by_week(data, json_format=False):
@@ -124,6 +180,9 @@ def get_games_by_week(data, json_format=False):
 
 def get_games_by_year(year):
     game_list = []
+    if OFFLINE_MODE:
+        print ('No offline data available for games by year.')
+        return []
     game_data = _query_database('games/{}'.format(year))
     for game in game_data:
         nfl_game = NflGame(game)
