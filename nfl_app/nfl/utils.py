@@ -113,10 +113,11 @@ def get_byes_by_week(week_data, json_format=False):
         return []
     if week < 1 or week > 17:
         return []
-    game_data = _query_database('games/2017/{}'.format(week))
     if OFFLINE_MODE:
         with open(os.path.join(BASE_DIR, 'nfl', 'test_scripts', 'weeks', 'games_2017_{}.json'.format(week))) as file:
             game_data = json.loads(file.read())
+    else:
+        game_data = _query_database('games/2017/{}'.format(week))
     return get_byes(game_data, json_format=json_format)
 
 
@@ -139,10 +140,11 @@ def get_current_status():
 
 def get_current_games():
     game_list = []
-    game_data = _query_database('games')
     if OFFLINE_MODE:
-        with open(os.path.join(BASE_DIR, 'nfl','test_scripts', 'weeks', 'games_2017_7.json')) as json_file:
+        with open(os.path.join(BASE_DIR, 'nfl','test_scripts', 'weeks', 'games_2017_10.json')) as json_file:
             game_data = json.loads(json_file.read())
+    else:
+        game_data = _query_database('games')
     for game in game_data:
         nfl_game = NflGame(game)
         game_list.append(nfl_game)
@@ -169,10 +171,11 @@ def get_games_by_week(data, json_format=False):
     if week < 1 or week > 17:
         return []
     game_list = []
-    game_data = _query_database('games/2017/{}'.format(week))
     if OFFLINE_MODE:
         with open(os.path.join(BASE_DIR, 'nfl', 'test_scripts', 'weeks', 'games_2017_{}.json'.format(week))) as file:
             game_data = json.loads(file.read())
+    else:
+        game_data = _query_database('games/2017/{}'.format(week))
     for game in game_data:
         game_list.append(NflGame(game, json_format=json_format))
     return game_list
@@ -181,9 +184,10 @@ def get_games_by_week(data, json_format=False):
 def get_games_by_year(year):
     game_list = []
     if OFFLINE_MODE:
-        print ('No offline data available for games by year.')
-        return []
-    game_data = _query_database('games/{}'.format(year))
+        with open(os.path.join(BASE_DIR, 'nfl' ,'test_scripts', 'year', '{}.json'.format(year))) as json_file:
+            game_data = json.loads(json_file.read())
+    else:
+        game_data = _query_database('games/{}'.format(year))
     for game in game_data:
         nfl_game = NflGame(game)
         game_list.append(nfl_game)
@@ -193,11 +197,12 @@ def get_games_by_year(year):
 def get_participant_records():
     team_scores = get_team_records()
     participant_scores = []
-    for participant in PARTICIPANT_TEAMS.keys():
-        individual_score = {'name': participant, 'wins': 0}
-        for team in PARTICIPANT_TEAMS[participant]:
-            individual_score['wins'] += team_scores[team]['wins']
-        participant_scores.append(individual_score)
+    if team_scores and len(team_scores) > 0:
+        for participant in PARTICIPANT_TEAMS.keys():
+            individual_score = {'name': participant, 'wins': 0}
+            for team in PARTICIPANT_TEAMS[participant]:
+                individual_score['wins'] += team_scores[team]['wins']
+            participant_scores.append(individual_score)
     return participant_scores
 
 def get_team_records():
