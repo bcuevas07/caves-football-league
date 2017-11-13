@@ -6,12 +6,24 @@
     <title>NFL 2017</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet"  type="text/css" href="{% static 'css/nfl.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nfl.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.css' %}">
 
     <script src="{% static 'js/jquery-3.2.1.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/nfl.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/datatables.js' %}" type="text/javascript"></script>
+    <script>
+        $(function() {
+            $(".datatable").DataTable({
+                    "bLengthChange": false,
+                    "pageLength": 50, // none of the tables need a longer length. We can change to 100 later if desired
+                    "bPaginate": false
+                });
+        });
+    </script>
     {% block scripts %}
+
     {% endblock %}
 </head>
 <body>

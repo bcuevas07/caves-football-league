@@ -38,6 +38,7 @@
                             html += "</tr>";
                             $("#week-schedule-table > tbody:last-child").append(html);
                         }
+
                         if (bye_week.length > 0) {
                             clearTable("#bye-week-table", false);
 
@@ -46,6 +47,8 @@
                                 $("#bye-week-table > tbody:last-child").append(html);
                             }
                         }
+
+                        //$("#week-schedule-table").DataTable().draw();
                     }
                     else {
                         // Handle error here
@@ -84,7 +87,7 @@
 <div id="week-schedule-section" class="row">
     <div class="col-xs-9">
         <div class="table-responsive">
-                <table id="week-schedule-table" class="table table-striped table-hover">
+                <table id="week-schedule-table" class="table table-striped table-hover datatable">
                     <thead>
                       <tr>
                           <th>Away Team</th>

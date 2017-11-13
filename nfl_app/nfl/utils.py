@@ -200,8 +200,11 @@ def get_participant_records():
     if team_scores and len(team_scores) > 0:
         for participant in PARTICIPANT_TEAMS.keys():
             individual_score = {'name': participant, 'wins': 0}
+            count = 1
             for team in PARTICIPANT_TEAMS[participant]:
                 individual_score['wins'] += team_scores[team]['wins']
+                individual_score['team_{}'.format(count)] = team
+                count += 1
             participant_scores.append(individual_score)
     return participant_scores
 
