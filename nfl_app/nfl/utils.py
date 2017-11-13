@@ -195,6 +195,21 @@ def get_games_by_year(year):
 
 
 def get_participant_records():
+    """
+        This method builds a dictionary with the following structure:
+            {
+                {
+                    'name': Participant Name,
+                    'wins': # of wins,
+                    'team_1': Name of first team,
+                    'team_2': Name of second team,
+                    'team_3': Name of third team,
+                    'team_4': Name of fourth team
+                      ...
+                }
+                 ...
+            }
+    """
     team_scores = get_team_records()
     participant_scores = []
     if team_scores and len(team_scores) > 0:

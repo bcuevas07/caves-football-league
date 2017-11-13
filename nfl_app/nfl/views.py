@@ -14,6 +14,8 @@ from nfl.utils import get_current_games, get_games_by_week, get_team_records, ge
 
 def home(request):
     participant_scores = get_participant_records()
+    # the current implementation expects each participant to have 4 teams, so the template that loads this data
+    # will only display team_1 through team_4 for each participant. We can make this more flexible if desired.
     return render(request, 'home.html', context={'part_scores': participant_scores})
 
 
