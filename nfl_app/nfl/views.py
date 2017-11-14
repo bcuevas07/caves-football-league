@@ -28,10 +28,38 @@ def current_week(request):
 
 def season_scores(request):
     team_scores = get_team_records()
-    teams = []
+    afc_north = []
+    afc_east = []
+    afc_south = []
+    afc_west = []
+    nfc_north = []
+    nfc_east = []
+    nfc_south = []
+    nfc_west = []
     for team in team_scores.keys():
-        teams.append(team_scores[team])
-    return render(request, 'season_scores.html', context={'team_scores': teams})
+        if team_scores[team]['division'].lower() == 'north':
+            if team_scores[team]['conference'].lower() == 'afc':
+                afc_north.append(team_scores[team])
+            else:
+                nfc_north.append(team_scores[team])
+        elif team_scores[team]['division'].lower() == 'east':
+            if team_scores[team]['conference'].lower() == 'afc':
+                afc_east.append(team_scores[team])
+            else:
+                nfc_east.append(team_scores[team])
+        elif team_scores[team]['division'].lower() == 'south':
+            if team_scores[team]['conference'].lower() == 'afc':
+                afc_south.append(team_scores[team])
+            else:
+                nfc_south.append(team_scores[team])
+        elif team_scores[team]['division'].lower() == 'west':
+            if team_scores[team]['conference'].lower() == 'afc':
+                afc_west.append(team_scores[team])
+            else:
+                nfc_west.append(team_scores[team])
+    return render(request, 'season_scores.html',
+                  context={'afc_north': afc_north, 'afc_east': afc_east, 'afc_south': afc_south, 'afc_west': afc_west,
+                           'nfc_north': nfc_north, 'nfc_east': nfc_east, 'nfc_south': nfc_south, 'nfc_west': nfc_west})
 
 
 def weekly_schedule(request):

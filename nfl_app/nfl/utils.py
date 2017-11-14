@@ -223,7 +223,24 @@ def get_participant_records():
             participant_scores.append(individual_score)
     return participant_scores
 
+
 def get_team_records():
+    """
+        This method builds a dictionary with the following structure:
+            {
+                Name of team:
+                    {
+                        'wins': # of wins,
+                        'losses': # of losses,
+                        'ties': # of ties,
+                        'name': name of team,
+                        'conference': name of conference (AFC, NFC),
+                        'division': name of division (NORTH, EAST, SOUTH, WEST)
+                    },
+                    ...
+            }
+
+    """
     team_scores = {}
     games = get_games_by_year(2017)
     for game in games:
