@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 from nfl.deorators import post_only
 from nfl.utils import get_current_games, get_games_by_week, get_team_records, get_participant_records, get_byes_by_week, \
-    get_current_week
+    get_current_week, PENTHOUSE, RANKING_LIST
 
 
 # Create your views here.
@@ -16,7 +16,39 @@ def home(request):
     participant_scores = get_participant_records()
     # the current implementation expects each participant to have 4 teams, so the template that loads this data
     # will only display team_1 through team_4 for each participant. We can make this more flexible if desired.
-    return render(request, 'home.html', context={'part_scores': participant_scores})
+
+    standings = {}
+    count = 0
+    location = PENTHOUSE
+    wins = -1
+    for participant in sorted(participant_scores, key=lambda k: k['wins'], reverse=True):
+        if location not in standings.keys():
+            # new location, so participant automatically gets entered at the location
+            standings[location] = {'location': RANKING_LIST[location], 'name': [participant['name']]}
+            wins = participant['wins']
+            count += 1
+        else:
+            # location already created, so check if participant is tied or has less wins
+            if participant['wins'] == wins:
+                # tied, so share the same location
+                standings[location]['name'].append(participant['name'])
+                count += 1
+            else:
+                # participant has less wins, so automatically gets put in next location
+                wins = participant['wins']
+                standings[location]['name'] = ', '.join(standings[location]['name']) # convert list to a comma separated string
+                location = PENTHOUSE - count
+                standings[location] = {'location': RANKING_LIST[location], 'name': [participant['name']]}
+                count += 1
+
+    # check if the last processed location added needs to convert the list of names to a comma separated string
+    if isinstance(standings[location]['name'], list):
+        standings[location]['name'] = ', '.join(standings[location]['name'])
+
+    # reverse the list since it puts the outhouse (0) on top, but we want the penthouse (7) on top
+    standings_list = list(standings.values())
+    standings_list.reverse()
+    return render(request, 'home.html', context={'part_scores': participant_scores, 'standings': standings_list})
 
 
 def current_week(request):

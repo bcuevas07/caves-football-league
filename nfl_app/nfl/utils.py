@@ -90,6 +90,25 @@ PARTICIPANT_TEAMS = {
 PRESEASON_TAG = 'NflPreSeasonWeek'
 SEASON_TAG = 'NflWeek'
 
+PENTHOUSE = 7
+SUITE = 6
+BALCONY = 5
+LOBBY = 4
+PORCH = 3
+CLOSET = 2
+BASEMENT = 1
+OUTHOUSE = 0
+
+RANKING_LIST = {
+    PENTHOUSE: 'Penthouse',
+    SUITE: 'Suite',
+    BALCONY: 'Balcony',
+    LOBBY: 'Lobby',
+    PORCH: 'Porch',
+    CLOSET: 'Closet',
+    BASEMENT: 'Basement',
+    OUTHOUSE: 'Outhouse'
+}
 
 def get_byes(game_data, json_format=False):
     team_list = []
