@@ -77,10 +77,10 @@ TEAM_ID_MAP = {
 }
 
 PARTICIPANT_TEAMS = {
-    'Bryan': ['Atlanta Falcons', 'Tampa Bay Buccaneers', 'Indianapolis Colts', 'Miami Dolphins'],
+    'Bryan': ['Indianapolis Colts', 'Atlanta Falcons', 'Tampa Bay Buccaneers', 'Miami Dolphins'],
     'Daniel': ['New England Patriots', 'Carolina Panthers', 'Minnesota Vikings', 'Chicago Bears'],
-    'Dorothy': ['Pittsburgh Steelers', 'Kansas City Chiefs', 'Washington Redskins', 'Cincinnati Bengals'],
-    'Gabri': ['Green Bay Packers', 'Tennessee Titans', 'Detroit Lions', 'Jacksonville Jaguars'],
+    'Dorothy': ['Pittsburgh Steelers', 'Kansas City Chiefs', 'Cincinnati Bengals', 'Washington Redskins'],
+    'Gabri': ['Green Bay Packers', 'Detroit Lions', 'Tennessee Titans', 'Jacksonville Jaguars'],
     'Martin': ['Los Angeles Chargers', 'New Orleans Saints', 'Los Angeles Rams', 'New York Jets'],
     'Meg': ['Dallas Cowboys', 'Denver Broncos', 'Baltimore Ravens', 'San Francisco 49ers'],
     'Paula': ['Seattle Seahawks', 'Houston Texans', 'Philadelphia Eagles', 'Buffalo Bills'],
