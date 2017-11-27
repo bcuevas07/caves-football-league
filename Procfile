@@ -1,1 +1,1 @@
-web: python manage.py runserver --settings=config.settings.base
+web: python nfl_app/manage.py runserver
