@@ -1,1 +1,1 @@
-web: python nfl_app/manage.py runserver
+web: python nfl_app/manage.py runserver $PORT
